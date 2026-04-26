@@ -6,8 +6,6 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-# 1. Konfigūracija
-# Naudojame lokalų modelį, kurį atsisiuntei per Ollama
 MODEL_NAME = "llama3.2-vision"
 IMAGE_PATH = "images/nJrFco4Y.jpg"
 
@@ -141,8 +139,6 @@ def run_local_vision_agent():
 
     save_to_history(ai_ataskaita)
     update_google_sheets(ai_ataskaita)
-
-
 
 
 # 3. Paleidimas
