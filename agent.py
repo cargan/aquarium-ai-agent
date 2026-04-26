@@ -8,33 +8,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 
 MODEL_NAME = "llama3.2-vision"
 IMAGE_PATH = "images/nJrFco4Y.jpg"
-
 CONTEXT_PATH = "aquarium_40_context.json"
-
-# 2. Funkcija Google Sheets atnaujinimui
-def update_google_sheets(report):
-    try:
-        scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-        creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
-        client = gspread.authorize(creds)
-        
-        # SVARBU: Lentelės pavadinimas turi sutapti su tavo sukurtu Google Sheets
-        sheet = client.open("Aqua Duomenys").sheet1
-        
-        # Paruošiame eilutę
-        row = [
-            datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            report.get('vandens_skaidrumas', 'N/A'),
-            report.get('augalų_būklė', 'N/A'),
-            report.get('gyventojų_patikra', 'N/A'),
-            report.get('pastebėtos_anomalijos', 'N/A'),
-            report.get('rekomendacija', 'N/A')
-        ]
-        
-        sheet.append_row(row)
-        print("📊 Google Sheets atnaujinta!")
-    except Exception as e:
-        print(f"❌ Klaida su Google Sheets: {e.text}")
 
 
 def save_to_history(new_data):
@@ -55,20 +29,14 @@ def save_to_history(new_data):
     
     print(f"📂 Duomenys sėkmingai išsaugoti į {history_file}")
 
-    import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-
 
 def update_google_sheets(ai_report):
-    # Konfigūracija
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
     creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
     client = gspread.authorize(creds)
     
-    # Atidaryk lentelę pagal pavadinimą
     sheet = client.open("Aqua Duomenys").sheet1
     
-    # Paruošiame eilutę (ištraukiame duomenis iš AI JSON)
     row = [
         datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         ai_report.get('vandens_skaidrumas', ''),
