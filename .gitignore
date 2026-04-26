@@ -1,0 +1,6 @@
+credentials.json
+aquarium_history.json
+__pycache__/
+.DS_Store
+venv
+.env

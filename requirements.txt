@@ -1,0 +1,5 @@
+requests
+dotenv
+ollama
+gspread 
+oauth2client

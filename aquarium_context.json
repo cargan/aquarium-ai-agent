@@ -1,0 +1,21 @@
+{
+  "owner": "Cargan",
+  "setups": [
+    {
+      "id": "small_40l",
+      "name": "Mažasis akvariumas",
+      "volume": 40,
+      "substrate": "Light gravel and sand",
+      "residents": ["Žarijinės tetros", "Sraigės", "Omano krevetės"],
+      "last_water_change": "2026-04-20"
+    },
+    {
+      "id": "big_112l",
+      "name": "Didysis akvariumas",
+      "volume": 112,
+      "substrate": "Aqua Soil/Sand",
+      "residents": [],
+      "last_water_change": "2026-04-18"
+    }
+  ]
+}

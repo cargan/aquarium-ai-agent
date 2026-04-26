@@ -1,0 +1,10 @@
+{
+  "setup_details": {
+    "target_id": "small_40l",
+    "volume": 40,
+    "substrate": "Soil and Sand",
+    "residents": ["Žarijinės tetros", "Sraigės", "Omano krevetės"],
+    "filter_type": "internal",
+    "last_noted_issue": "Šiek tiek žalių taškinių dumblių ant stiklo"
+  }
+}
