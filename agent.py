@@ -3,7 +3,7 @@ from vision import run_local_vision_agent
 
 
 MODEL_NAME = "llama3.2-vision"
-IMAGE_PATH = "images/cVsEvlhs.jpg"
+IMAGE_PATH = "images/xUZmPdHT.jpg"
 CONTEXT_PATH = "aquarium_40_context.json"
 
 # 3. Paleidimas
