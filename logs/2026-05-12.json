@@ -1,14 +1,14 @@
   {
-    "image_filename": "snapshot_1.jpg",
+    "image_filename": "snapshot_0.jpg",
     "vandens_skaidrumas": "Skaidrus",
     "dumbliai": "Ne",
     "augalų_būklė": "Sveiki",
     "gyventojų_patikra": "Žuvys: 10. Patikra: 8/10",
     "pastebėtos_anomalijos": "Šiek tiek žalių taškinių dumblių ant stiklo",
     "rekomendacija": "Dabartinis akvariumas yra sveikas, bet reikia nukelti dumblius",
-    "timestamp": "2026-05-13T17:05:58.731820",
+    "timestamp": "2026-05-12T17:05:58.731820",
     "metrics": {
-      "fish_count": 12,
+      "fish_count": 10,
       "water_clarity": "Crystal Clear"
     }
   }
