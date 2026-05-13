@@ -1,0 +1,14 @@
+  {
+    "image_filename": "snapshot_2.jpg",
+    "vandens_skaidrumas": "Skaidrus",
+    "dumbliai": "Ne",
+    "augalų_būklė": "Sveiki",
+    "gyventojų_patikra": "Žuvys: 10. Patikra: 8/10",
+    "pastebėtos_anomalijos": "Šiek tiek žalių taškinių dumblių ant stiklo",
+    "analysis": "Test",
+    "date": "2026-05-13T17:05:58.731820",
+    "metrics": {
+      "fish_count": 12,
+      "water_clarity": "Crystal Clear"
+    }
+  }
