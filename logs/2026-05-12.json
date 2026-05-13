@@ -5,8 +5,8 @@
     "augalų_būklė": "Sveiki",
     "gyventojų_patikra": "Žuvys: 10. Patikra: 8/10",
     "pastebėtos_anomalijos": "Šiek tiek žalių taškinių dumblių ant stiklo",
-    "rekomendacija": "Dabartinis akvariumas yra sveikas, bet reikia nukelti dumblius",
-    "timestamp": "2026-05-12T17:05:58.731820",
+    "analysis": "Dabartinis akvariumas yra sveikas, bet reikia nukelti dumblius",
+    "date": "2026-05-12T17:05:58.731820",
     "metrics": {
       "fish_count": 10,
       "water_clarity": "Crystal Clear"
