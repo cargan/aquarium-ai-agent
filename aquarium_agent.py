@@ -47,3 +47,7 @@ def download_latest_photo_from_drive():
         status, done = downloader.next_chunk()
 
     return file_name
+
+
+if __name__ == "__main__":
+    download_latest_photo_from_drive()
