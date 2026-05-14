@@ -8,7 +8,7 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: write # Leidžia robotui įkelti failus atgal į repo
 
@@ -31,7 +31,7 @@ jobs:
       - name: Run Aquarium Agent
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python aquarium_agent.py
+        run: python agent.py
 
       - name: Commit and Push changes
         run: |
