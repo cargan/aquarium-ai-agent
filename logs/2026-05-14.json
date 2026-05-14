@@ -1,0 +1,9 @@
+{
+    "analysis": "The aquarium appears to be a well-planted tank with a natural environment. However, the water clarity seems to be compromised, and there are no visible fish.",
+    "metrics": {
+        "fish_count": 0,
+        "water_clarity": "low"
+    },
+    "date": "2026-05-14T09:43:34.192668",
+    "image_filename": "2026-05-14.jpeg"
+}
