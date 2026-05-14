@@ -1,0 +1,42 @@
+name: Aquarium AI Sync
+
+on:
+  schedule:
+    - cron: '0 10 * * *' # Paleidžia kasdien 10:00 UTC (apie 13:00 Lietuvoje)
+  workflow_dispatch:      # Leidžia paleisti rankiniu būdu per GitHub puslapį
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write # Leidžia robotui įkelti failus atgal į repo
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+
+      - name: Install dependencies
+        run: |
+          pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib requests
+
+      - name: Create Google Credentials File
+        run: echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > service_account.json
+
+      - name: Run Aquarium Agent
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python aquarium_agent.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "Aquarium Bot"
+          git config --global user.email "actions@github.com"
+          git add logs/ snapshots/
+          # Commitina tik tada, jei yra naujų failų
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🐠 New AI Analysis: $(date +'%Y-%m-%d')" && git push)
