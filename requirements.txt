@@ -1,8 +1,10 @@
 requests
 dotenv
-ollama
-gspread 
+# ollama
+gspread
 oauth2client
-google-api-python-client 
-google-auth-httplib2 
+google-api-python-client
+google-auth-httplib2
 google-auth-oauthlib
+Pillow
+pillow-heif

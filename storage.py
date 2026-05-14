@@ -45,3 +45,9 @@ def update_google_sheets(ai_report):
 
     sheet.append_row(row)
     print("📊 Google Sheets lentelė atnaujinta!")
+
+
+def save_to_logs(log_data):
+    file_path = os.path.join("logs", f"{datetime.now().strftime('%Y-%m-%d')}.json")
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(log_data)
