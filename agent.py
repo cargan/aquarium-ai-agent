@@ -10,7 +10,6 @@ from download_photo import download_latest_photo_from_drive
 
 if __name__ == "__main__":
     image = download_latest_photo_from_drive()
-    # image = "snapshot_0.jpg"
     print("IMAGE:", image)
     if image:
         result = analyze_aquarium_with_groq(f"snapshots/{image}")

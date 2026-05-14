@@ -1,6 +1,8 @@
 import os
+import json
 import requests
 import base64
+from datetime import datetime
 
 from dotenv import load_dotenv
 
@@ -72,8 +74,6 @@ def analyze_aquarium_with_groq(image_path):
         }
 
         payload = {
-            # "model": "llama-3.1-8b-instant",
-            # "model": "llama-3.2-11b-vision-preview",
             "model": "meta-llama/llama-4-scout-17b-16e-instruct",
             "messages": [
                 {
@@ -81,7 +81,7 @@ def analyze_aquarium_with_groq(image_path):
                     "content": [
                         {
                             "type": "text",
-                            "text": "Analyze this aquarium. Return JSON with keys: date, analysis, metrics (fish_count, water_clarity).",
+                            "text": "Analyze this aquarium. Return JSON with keys: analysis, metrics (fish_count, water_clarity).",
                         },
                         {
                             "type": "image_url",
@@ -99,7 +99,14 @@ def analyze_aquarium_with_groq(image_path):
         response = requests.post(url, headers=headers, json=payload)
 
         if response.status_code == 200:
-            return response.json()["choices"][0]["message"]["content"]
+            result_content = response.json()["choices"][0]["message"]["content"]
+            result = json.loads(result_content)  # Konvertuojame JSON stringą į dict
+
+            result["date"] = datetime.now().isoformat()  # Pridedame datą prie rezultato
+            result["image_filename"] = image_path.split("/")[
+                -1
+            ]  # Pridedame nuotraukos pavadinimą prie rezultato
+            return json.dumps(result, ensure_ascii=False, indent=4)
         else:
             # Išspausdiname tikslią žinutę iš Groq serverio
             print(f"❌ Groq klaida 400! Detalės: {response.text}")

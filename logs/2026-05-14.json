@@ -1,8 +1,9 @@
 {
-"date": "2023-12-01",
-  "analysis": "The aquarium appears to be a well-established ecosystem with a variety of plants and possibly some fish. However, the image does not provide a clear view of the fish, making it difficult to determine their exact number or species.",
-  "metrics": {
-    "fish_count": 5,
-    "water_clarity": "low"
-  }
+    "analysis": "The aquarium appears to be a well-planted tank with a natural environment. However, the water clarity seems to be compromised, and there are no visible fish.",
+    "metrics": {
+        "fish_count": 0,
+        "water_clarity": "low"
+    },
+    "date": "2026-05-14T12:36:28.258912",
+    "image_filename": "2026-05-14.jpeg"
 }
