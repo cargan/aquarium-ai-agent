@@ -1,5 +1,4 @@
 import io
-from datetime import datetime
 
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
@@ -39,15 +38,13 @@ def download_latest_photo_from_drive():
 
     file_id = items[0]["id"]
     file_name = items[0]["name"]
-    today_date = datetime.now().strftime("%Y-%m-%d")
-    new_filename = f"{today_date}.jpeg"
 
     # Atsisiunčiame failą į snapshots folderį
     request = service.files().get_media(fileId=file_id)
-    fh = io.FileIO(f"snapshots/{new_filename}", "wb")
+    fh = io.FileIO(f"snapshots/{file_name}", "wb")
     downloader = MediaIoBaseDownload(fh, request)
     done = False
     while done is False:
         status, done = downloader.next_chunk()
 
-    return new_filename
+    return file_name

@@ -18,43 +18,11 @@ from pillow_heif import register_heif_opener
 register_heif_opener()
 
 
-def get_processed_base64(image_path):
-    """
-    Pagrindinis metodas: nusprendžia, ar reikia konvertuoti,
-    ir grąžina paruoštą Base64 eilutę.
-    """
-    file_extension = os.path.splitext(image_path)[1].lower()
-
-    # 1. Atidarome nuotrauką (Pillow dėka HEIC atidaromas taip pat kaip JPEG)
-    with Image.open(image_path) as img:
-        # 2. Jei tai HEIC arba turi skaidrumo (PNG), konvertuojame į RGB
-        if file_extension == ".heic" or img.mode in ("RGBA", "P"):
-            img = convert_to_jpeg_format(img)
-
-        # 3. Atliekame bendrą apdorojimą (resize, kokybė, base64)
-        return finalize_image_for_api(img)
-
-
-def convert_to_jpeg_format(img_obj):
-    """
-    Metodas, atsakingas tik už spalvų erdvės sutvarkymą.
-    """
-    return img_obj.convert("RGB")
-
-
-def finalize_image_for_api(img_obj, max_size=(1024, 1024)):
-    """
-    Metodas, atsakingas už rezoliucijos mažinimą ir kodavimą.
-    """
-    # Proporcingai sumažiname nuotrauką, kad neviršytų limitų
-    img_obj.thumbnail(max_size)
-
-    # Išsaugome į buferį
-    buffer = io.BytesIO()
-    img_obj.save(buffer, format="JPEG", quality=85)
-
-    # Paverčiame į Base64
-    return base64.b64encode(buffer.getvalue()).decode("utf-8")
+def get_base64_from_file(file_path):
+    with open(file_path, "rb") as image_file:
+        # Nuskaitome baitus ir koduojame
+        encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
+        return encoded_string
 
 
 def analyze_aquarium_with_groq(image_path):
@@ -65,7 +33,7 @@ def analyze_aquarium_with_groq(image_path):
         return None
 
     try:
-        base64_image = get_processed_base64(image_path)
+        base64_image = get_base64_from_file(image_path)
 
         url = "https://api.groq.com/openai/v1/chat/completions"
         headers = {
